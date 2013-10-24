@@ -1,6 +1,6 @@
 {
   "name": "dreamforce-2013-survey-demo",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "A node app demonstrating Heroku, CloudConnect, and Force.com",
   "main": "index.js",
   "scripts": {
