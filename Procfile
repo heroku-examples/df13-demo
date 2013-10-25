@@ -1,1 +1,1 @@
-web: nodemon --watch lib index.coffee
+web: bin/web

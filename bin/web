@@ -1,0 +1,12 @@
+#!/bin/bash
+
+ROOT=$(dirname $(dirname $0))
+PATH="node_modules/.bin:$PATH"
+
+cd $ROOT
+
+if [ "${NODE_ENV}" == "production" ]; then
+  exec coffee index.coffee
+else
+  exec nodemon --watch lib index.coffee
+fi
