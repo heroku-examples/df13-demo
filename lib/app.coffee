@@ -12,13 +12,14 @@ app.use express.static("#{__dirname}/public")
 app.use app.router
 
 app.get "/", (req, res) ->
-  # res.send "ok"
-  db.getSurveyId (id) ->
-    # console.log "getSurveyId", id
-    # res.send "#{id}"
-    res.render "index.jade", id:id
+  db.getSurvey (survey) ->
+    res.render "index.jade", survey
 
-app.post "/surveys", (req, res) ->
+app.get "/survey", (req, res) ->
+  db.getSurvey (survey) ->
+    res.json survey
+
+app.post "/survey", (req, res) ->
   res.redirect "/"
 
 app.listen process.env.PORT or 5000

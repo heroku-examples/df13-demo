@@ -1,1 +1,1 @@
-web: coffee index.coffee
+web: nodemon --watch lib index.coffee
