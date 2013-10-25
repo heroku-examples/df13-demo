@@ -1,6 +1,6 @@
 connect = require("connect")
 express = require("express")
-jade = require("jade")
+exphbs = require("express3-handlebars")
 db = require("./db")
 
 module.epxorts = app = express()
@@ -11,9 +11,12 @@ app.use connect.json()
 app.use express.static("#{__dirname}/public")
 app.use app.router
 
+app.engine "handlebars", exphbs(defaultLayout: "main")
+app.set "view engine", "handlebars"
+
 app.get "/", (req, res) ->
   db.getSurvey (survey) ->
-    res.render "index.jade", survey
+    res.render "index", survey
 
 app.get "/survey", (req, res) ->
   db.getSurvey (survey) ->

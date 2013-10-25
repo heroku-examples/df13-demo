@@ -18,7 +18,7 @@
     "pg": "~2.8.2",
     "express": "~3.4.3",
     "connect": "~2.10.1",
-    "jade": "~0.35.0",
-    "coffee-script": "~1.6.3"
+    "coffee-script": "~1.6.3",
+    "express3-handlebars": "~0.5.0"
   }
 }
