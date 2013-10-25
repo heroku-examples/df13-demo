@@ -12,13 +12,13 @@ If you're new to Heroku or Node.js development, you'll need to install a few thi
 Clone the repo and install npm dependencies:
 
 ```sh
-git clone https://github.com/heroku-examples/dreamforce-2013-survey-demo.git
-cd dreamforce-2013-survey-demo
+git clone https://github.com/heroku-examples/df13-demo.git
+cd df13-demo
 npm install
 ```
 
 ```
-heroku git:remote -a dreamforce-2013-survey-demo
+heroku git:remote -a df13-demo
 heroku plugins:install git://github.com/ddollar/heroku-config.git
 heroku config:pull
 npm install
