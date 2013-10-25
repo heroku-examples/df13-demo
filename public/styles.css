@@ -1,0 +1,94 @@
+/* apply a natural box layout model to all elements */
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family:VAGRoundedStdThin;
+  src:url(/public/vagroundedstd-thin-webfont.woff);
+  font-weight:400;
+  font-style:normal;
+}
+
+body {
+  font-family: "helvetica neue", helvetica, arial, sans;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: #4CAEE2;
+  padding: 0;
+  color: #0D477B;
+}
+
+.content {
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  min-width: 320px;
+  max-width: 640px;
+  padding: 20px;
+}
+
+h1 {
+  font-family: VAGRoundedStdThin;
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+h2 {
+  font-family: VAGRoundedStdThin;
+  list-style: none;
+  margin: 0;
+  padding: 0 0 6px 0;
+  font-size: 20px;
+}
+
+ul.questions {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul.questions > li {
+  margin: 10px 0;
+  padding: 10px 0;
+  /*border-bottom: 1px solid #0D477B;*/
+}
+
+div.radio {
+  padding: 0 0 5px 0;
+}
+
+div.radio {
+  padding: 0 0 5px 0;
+}
+
+input[type="text"] {
+  font-family: "helvetica neue", helvetica, arial, sans;
+  font-size: 24px;
+  padding: 8px;
+  color: #0D477B;
+  border-radius: 6px;
+  outline: none;
+  display: block;
+  width: 100%;
+  -webkit-appearance: none;
+}
+
+input[type="submit"] {
+  font-family:VAGRoundedStdThin;
+  font-size: 24px;
+  padding: 8px;
+  background-color: #0D477B;
+  color: white;
+  border-radius: 6px;
+  outline: none;
+  display: block;
+  width: 100%;
+  -webkit-appearance: none;
+  margin: 20px 0;
+  border: none;
+  cursor: pointer;
+}

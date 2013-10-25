@@ -1,1 +1,14 @@
-<h1>Example App: Home</h1>
+<h1>Welcome to Dreamforce!</h1>
+
+<form>
+  <ul class="questions">
+    {{#each questions}}
+      <li class="{{response_type__c}}">
+        <h2>{{question__c}}</h2>
+        {{{answerInput}}}
+      </li>
+    {{/each}}
+  </ul>
+
+  <input type="submit" value="Submit">
+</form>

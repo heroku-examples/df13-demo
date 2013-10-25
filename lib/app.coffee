@@ -1,6 +1,5 @@
 connect = require("connect")
 express = require("express")
-exphbs = require("express3-handlebars")
 db = require("./db")
 
 module.epxorts = app = express()
@@ -8,10 +7,10 @@ module.epxorts = app = express()
 app.disable "x-powered-by"
 app.use connect.urlencoded()
 app.use connect.json()
-app.use express.static("#{__dirname}/public")
+app.use '/public/', express.static("public")
 app.use app.router
 
-app.engine "handlebars", exphbs(defaultLayout: "main")
+app.engine "handlebars", require("./handlebars-config")
 app.set "view engine", "handlebars"
 
 app.get "/", (req, res) ->
