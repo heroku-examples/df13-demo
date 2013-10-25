@@ -13,13 +13,11 @@ config =
 
 module.exports = getSurveyId: (cb) ->
   pg.connect config, (err, client, done) ->
-    throw err  if err
+    throw err if err
     client.query "SELECT id FROM survey__c;", (err, result) ->
       done()
-      throw err  if err
+      throw err if err
       cb result.rows[0].id
-
-
 
 # client.query("SELECT table_name FROM information_schema.tables WHERE table_type = 'BASE TABLE' AND table_schema NOT IN ('pg_catalog', 'information_schema'); ", function(err, result) {
 #   if (err) throw err;
