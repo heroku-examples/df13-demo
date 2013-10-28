@@ -34,10 +34,10 @@ npm test
 
 ```sh
 # remote psql console
-psql $(heroku config:get DATABASE_URL)
+foreman run psql
 
 # sync local pg with remote
-./bin/db_pull
+foreman run db_pull
 ```
 
 ## License
