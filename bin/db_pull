@@ -1,0 +1,4 @@
+pg_dump -Fc --no-acl --no-owner $(heroku config:get DATABASE_URL) > db.dump
+dropdb df13-demo
+createdb df13-demo
+pg_restore --verbose --clean --no-acl --no-owner -d postgres://localhost/df13-demo db.dump
