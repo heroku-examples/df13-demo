@@ -6,7 +6,7 @@ PATH="node_modules/.bin:$PATH"
 cd $ROOT
 
 if [ "${NODE_ENV}" == "production" ]; then
-  exec coffee index.coffee
+  exec coffee server.coffee
 else
-  exec nodemon --watch lib index.coffee
+  exec nodemon --watch lib server.coffee
 fi

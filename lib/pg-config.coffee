@@ -13,7 +13,6 @@ module.exports = ->
     config.user = parsedUrl.auth.split(":")[0]
     config.password = parsedUrl.auth.split(":")[1]
 
-  unless process.env.NODE_ENV is "test"
-    config.ssl = true
+  config.ssl = true unless process.env.NODE_ENV in ["test", "development"]
 
   config

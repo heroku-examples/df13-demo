@@ -16,9 +16,7 @@ git clone https://github.com/heroku-examples/df13-demo.git
 cd df13-demo
 npm install
 heroku git:remote -a df13-demo
-heroku plugins:install git://github.com/ddollar/heroku-config.git
-heroku config:pull
-foreman start
+foreman start web
 ```
 
 Pop open [localhost:5000](http://localhost:5000).
@@ -28,16 +26,6 @@ Pop open [localhost:5000](http://localhost:5000).
 ```sh
 npm install
 npm test
-```
-
-## Conveniences
-
-```sh
-# remote psql console
-foreman run psql
-
-# sync local pg with remote
-foreman run db_pull
 ```
 
 ## License

@@ -22,4 +22,6 @@ app.get "/survey", (req, res) ->
     res.json survey
 
 app.post "/survey", (req, res) ->
-  res.redirect "/"
+  db.saveSurvey req.body, (err, survey) ->
+    return res.json(500, {error: err}) if err
+    res.json survey
