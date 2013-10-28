@@ -1,18 +1,8 @@
-url = require("url")
 pg = require("pg")
-
-parsedUrl = url.parse(process.env.DATABASE_URL)
-
-config =
-  user: parsedUrl.auth.split(":")[0]
-  password: parsedUrl.auth.split(":")[1]
-  database: parsedUrl.path.replace("/", "")
-  port: Number(parsedUrl.port)
-  host: parsedUrl.hostname
-  ssl: true
+pgConfig = require("./pg-config")()
 
 module.exports = getSurveyId: (cb) ->
-  pg.connect config, (err, client, done) ->
+  pg.connect pgConfig, (err, client, done) ->
     throw err if err
     client.query "SELECT id FROM survey__c;", (err, result) ->
       done()
@@ -23,7 +13,7 @@ module.exports = getSurvey: (cb) ->
 
   survey = {}
 
-  pg.connect config, (err, client, done) ->
+  pg.connect pgConfig, (err, client, done) ->
     throw err if err
 
     client.query "SELECT id FROM survey__c;", (err, result) ->
