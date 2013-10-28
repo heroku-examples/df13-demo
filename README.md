@@ -25,14 +25,14 @@ Pop open [localhost:5000](http://localhost:5000).
 
 ## Tests
 
-```
+```sh
 npm install
 npm test
 ```
 
 ## Conveniences
 
-```
+```sh
 # remote psql console
 psql $(heroku config:get DATABASE_URL)
 
