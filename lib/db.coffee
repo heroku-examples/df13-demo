@@ -42,7 +42,7 @@ module.exports =
           survey_completed_location__latitude__s,
           survey_completed_location__longitude__s
         ) VALUES (
-          '#{survey.id}',
+          #{survey.id},
           '#{survey.firstname}',
           '#{survey.lastname}',
           '#{survey.latitude}',
