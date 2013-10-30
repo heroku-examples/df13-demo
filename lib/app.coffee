@@ -1,5 +1,6 @@
 connect = require("connect")
 express = require("express")
+sanitize = require("validator").sanitize
 db = require("./db")
 
 module.exports = app = express()
@@ -22,6 +23,14 @@ app.get "/survey", (req, res) ->
     res.json survey
 
 app.post "/survey", (req, res) ->
+
+  # Watch out for XSS
+  for key, value of req.body
+    req.body[key] = sanitize(value).xss() unless typeof(value) is "object"
+
+  for key, value of req.body.questions
+    req.body.questions[key] = sanitize(value).xss()
+
   db.saveSurvey req.body, (err, survey) ->
     return res.json(500, {error: err}) if err
     res.json survey
