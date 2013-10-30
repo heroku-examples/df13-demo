@@ -1,26 +1,17 @@
-/* apply a natural box layout model to all elements */
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-
-@font-face {
-  font-family:VAGRoundedStdThin;
-  src:url(/public/vagroundedstd-thin-webfont.woff);
-  font-weight:400;
-  font-style:normal;
-}
-
 body {
-  font-family: "helvetica neue", helvetica, arial, sans;
+  font-family: Lato, "helvetica neue", helvetica;
   font-size: 18px;
-  font-weight: bold;
-  background-color: #4CAEE2;
+  background-color: #333;
   padding: 0;
-  color: #0D477B;
+  color: #999;
 }
-
 .content {
   margin-left: auto;
   margin-right: auto;
@@ -29,60 +20,59 @@ body {
   max-width: 640px;
   padding: 20px;
 }
-
+h1,
+h2,
+h3,
+h4 {
+  font-weight: bold;
+  color: #ccc;
+}
 h1 {
-  font-family: VAGRoundedStdThin;
-  color: white;
   margin: 0;
   padding: 0;
 }
-
 label {
-  font-family: VAGRoundedStdThin;
+  font-family: Lato, "helvetica neue", helvetica;
   list-style: none;
   margin: 0;
   padding: 0 0 6px 0;
   font-size: 20px;
+  line-height: 1.5;
 }
-
 ul.questions {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-
 ul.questions > li {
   margin: 10px 0;
   padding: 10px 0;
-  /*border-bottom: 1px solid #0D477B;*/
 }
-
 div.radio {
   padding: 0 0 5px 0;
 }
-
 div.radio label {
   font-size: 16px;
 }
-
 input[type="text"] {
   font-family: "helvetica neue", helvetica, arial, sans;
   font-size: 24px;
   padding: 8px;
-  color: #0D477B;
+  color: #999;
+  background-color: #222;
   border-radius: 6px;
+  border: none;
   outline: none;
   display: block;
   width: 100%;
   -webkit-appearance: none;
 }
-
 input[type="submit"] {
-  font-family:VAGRoundedStdThin;
+  font-family: Lato, "helvetica neue", helvetica;
   font-size: 24px;
   padding: 8px;
-  background-color: #0D477B;
-  color: white;
+  background-color: #999;
+  color: #eee;
   border-radius: 6px;
   outline: none;
   display: block;

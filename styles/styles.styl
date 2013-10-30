@@ -1,0 +1,85 @@
+// @import "themes/salesforce"
+// @import "themes/heroku"
+@import "themes/lato"
+
+// Styles
+// -----------------------------------------------------------------
+
+*, *:before, *:after
+  -moz-box-sizing border-box
+  -webkit-box-sizing border-box
+  box-sizing border-box
+
+body
+  fancy-font()
+  font-size 18px
+  background-color backgroundColor
+  padding 0
+  color textColor
+
+.content
+  margin-left auto
+  margin-right auto
+  position relative
+  min-width 320px
+  max-width 640px
+  padding 20px
+
+h1,h2,h3,h4
+  font-weight bold
+  color headingColor
+
+h1
+  margin 0
+  padding 0
+
+label
+  fancy-font()
+  list-style none
+  margin 0
+  padding 0 0 6px 0
+  font-size 20px
+  line-height: 1.5
+
+ul
+  &.questions
+    list-style none
+    margin 0
+    padding 0
+    & > li
+      margin 10px 0
+      padding 10px 0
+
+div
+  &.radio
+    padding 0 0 5px 0
+    label
+      font-size 16px
+
+input[type="text"]
+  normal-font()
+  font-size 24px
+  padding 8px
+  color textColor
+  background-color inputBackgroundColor
+  border-radius 6px
+  border: none
+  outline none
+  display block
+  width 100%
+  -webkit-appearance none
+
+input[type="submit"]
+  fancy-font()
+  font-size 24px
+  padding 8px
+  background-color textColor
+  color textColorInverse
+  border-radius 6px
+  outline none
+  display block
+  width 100%
+  -webkit-appearance none
+  margin 20px 0
+  border none
+  cursor pointer

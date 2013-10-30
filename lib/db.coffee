@@ -56,7 +56,7 @@ module.exports =
       client.query respondent_query, (err, result) ->
         done()
         return cb(err) if err
-        respondent_id = result.rows[0].id
+        respondent_id = result.rows[0].sfid
         questions = ({qid: k, response: v} for k,v of survey.questions)
 
         async.map questions

@@ -13,6 +13,7 @@ app.configure ->
   app.use app.router
   app.engine "handlebars", require("./handlebars-config")
   app.set "view engine", "handlebars"
+  app.use require('./stylus-config')
 
 app.get "/", (req, res) ->
   db.getSurvey (survey) ->
