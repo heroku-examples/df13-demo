@@ -7,9 +7,20 @@
   <input type="hidden" name="longitude" id="longitude">
 
   <ul class="questions">
+
+    <li>
+      <label for="firstnameInput">What's your first name?</label>
+      <input type="text" name="firstname" id="firstnameInput">
+    </li>
+
+    <li>
+      <label for="lastnameInput">What's your last name?</label>
+      <input type="text" name="lastname" id="lastnameInput">
+    </li>
+
     {{#each questions}}
       <li class="{{response_type__c}}">
-        <h2>{{question__c}}</h2>
+        <label>{{question__c}}</label>
         {{{answerInput}}}
       </li>
     {{/each}}

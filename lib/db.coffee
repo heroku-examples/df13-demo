@@ -37,22 +37,25 @@ module.exports =
       q = """
         INSERT INTO survey_respondent__c (
           survey__c,
+          respondent_firstname__c,
+          respondent_lastname__c,
           survey_completed_location__latitude__s,
           survey_completed_location__longitude__s
         ) VALUES (
           '#{survey.id}',
+          '#{survey.firstname}',
+          '#{survey.lastname}',
           '#{survey.latitude}',
           '#{survey.longitude}'
         ) returning id;
       """
 
+      # return cb(err, q.replace(/\n/g, ''))
+
       client.query q, (err, result) ->
         done()
         return cb(err) if err
-        # result.query = q
         respondent_id = result.rows[0].id
-        # cb(null, result)
-
         questions = ({qid: k, response: v} for k,v of survey.questions)
 
         async.map questions
