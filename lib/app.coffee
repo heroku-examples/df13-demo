@@ -23,8 +23,9 @@ app.get "/", (req, res) ->
       thanks: req.url.match(/thanks/)
 
 app.get "/schema", (req, res) ->
-  db.getSurvey (survey) ->
-    res.json survey
+  db.getAllSurveys (surveys) ->
+    db.getSurvey surveys[0].sfid, (survey) ->
+      res.json survey
 
 app.get "/:survey_id", (req, res) ->
   db.getSurvey req.params.survey_id, (survey) ->
