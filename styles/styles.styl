@@ -1,6 +1,6 @@
 // @import "themes/salesforce"
-// @import "themes/heroku"
-@import "themes/lato"
+@import "themes/heroku"
+// @import "themes/lato"
 
 // Styles
 // -----------------------------------------------------------------
@@ -9,6 +9,7 @@
   -moz-box-sizing border-box
   -webkit-box-sizing border-box
   box-sizing border-box
+
 
 body
   fancy-font()
@@ -41,12 +42,15 @@ label
   font-size 20px
   line-height: 1.5
 
+a
+  color textColor
+
 ul
-  &.questions
+  &.questions, &.surveys
     list-style none
     margin 0
     padding 0
-    & > li
+    > li
       margin 10px 0
       padding 10px 0
 

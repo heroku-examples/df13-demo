@@ -6,11 +6,11 @@
   box-sizing: border-box;
 }
 body {
-  font-family: Lato, "helvetica neue", helvetica;
+  font-family: "helvetica neue", helvetica;
   font-size: 18px;
-  background-color: #333;
+  background-color: #1a1b23;
   padding: 0;
-  color: #999;
+  color: #afb1c7;
 }
 .content {
   margin-left: auto;
@@ -25,26 +25,31 @@ h2,
 h3,
 h4 {
   font-weight: bold;
-  color: #ccc;
+  color: #fff;
 }
 h1 {
   margin: 0;
   padding: 0;
 }
 label {
-  font-family: Lato, "helvetica neue", helvetica;
+  font-family: "helvetica neue", helvetica;
   list-style: none;
   margin: 0;
   padding: 0 0 6px 0;
   font-size: 20px;
   line-height: 1.5;
 }
-ul.questions {
+a {
+  color: #afb1c7;
+}
+ul.questions,
+ul.surveys {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-ul.questions > li {
+ul.questions > li,
+ul.surveys > li {
   margin: 10px 0;
   padding: 10px 0;
 }
@@ -58,8 +63,8 @@ input[type="text"] {
   font-family: "helvetica neue", helvetica, arial, sans;
   font-size: 24px;
   padding: 8px;
-  color: #999;
-  background-color: #222;
+  color: #afb1c7;
+  background-color: #000;
   border-radius: 6px;
   border: none;
   outline: none;
@@ -68,11 +73,11 @@ input[type="text"] {
   -webkit-appearance: none;
 }
 input[type="submit"] {
-  font-family: Lato, "helvetica neue", helvetica;
+  font-family: "helvetica neue", helvetica;
   font-size: 24px;
   padding: 8px;
-  background-color: #999;
-  color: #eee;
+  background-color: #afb1c7;
+  color: #000;
   border-radius: 6px;
   outline: none;
   display: block;
