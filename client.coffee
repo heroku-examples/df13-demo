@@ -1,9 +1,11 @@
-location = require('geolocation-stream')()
+window.geo = require('geolocation-stream')()
 
-location.on "data", (position) ->
-  console.log position
-  document.querySelector("#latitude").value = position.coords.latitude
-  document.querySelector("#longitude").value = position.coords.longitude
+if document.querySelector("#latitude")
 
-location.on "error", (err) ->
-  console.error "geolocation error", err
+  geo.on "data", (position) ->
+    console.log position
+    document.querySelector("#latitude").value = position.coords.latitude
+    document.querySelector("#longitude").value = position.coords.longitude
+
+  geo.on "error", (err) ->
+    console.error "geolocation error", err
