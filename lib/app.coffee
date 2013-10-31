@@ -1,6 +1,5 @@
 connect = require("connect")
 express = require("express")
-sanitize = require("validator").sanitize
 db = require("./db")
 
 module.exports = app = express()
@@ -27,12 +26,12 @@ app.get "/schema", (req, res) ->
     db.getSurvey surveys[0].sfid, (survey) ->
       res.json survey
 
-app.get "/:survey_id", (req, res) ->
-  db.getSurvey req.params.survey_id, (survey) ->
-    res.render "survey", survey
-
 app.post "/surveys", (req, res) ->
   db.saveSurvey req.body, (err, survey) ->
     return res.json(500, {error: err}) if err
     # res.json survey
     res.redirect("/?thanks")
+
+app.get "/surveys/:survey_id", (req, res) ->
+  db.getSurvey req.params.survey_id, (survey) ->
+    res.render "survey", survey

@@ -1,6 +1,7 @@
 pg = require("pg")
 pgConfig = require("./pg-config")()
 async = require("async")
+sanitize = require("validator").sanitize
 
 module.exports =
 
@@ -18,10 +19,12 @@ module.exports =
     pg.connect pgConfig, (err, client, done) ->
       throw err if err
 
-      client.query "SELECT name, sfid FROM survey__c where sfid='#{sfid}';", (err, result) ->
+      q = "SELECT name, sfid FROM survey__c where sfid='#{sfid}' LIMIT 1;"
+      client.query q, (err, result) ->
         done()
         throw err if err
-        survey = result.rows[0]
+        survey.name = result.rows[0].name
+        survey.sfid = result.rows[0].sfid
 
         q = """
           select name, question__c, sfid, response_type__c, survey_del__c
@@ -45,14 +48,14 @@ module.exports =
             cb(survey)
 
   saveSurvey: (survey, cb) ->
-    # return cb(null, survey)
 
     # Watch out for XSS
-    for key, value of survey
-      survey[key] = sanitize(value).xss() unless typeof(value) is "object"
+    # for key, value of survey
+    #   survey[key] = sanitize(value).xss() unless typeof(value) is "object"
 
-    for key, value of survey.questions
-      survey.questions[key] = sanitize(value).xss()
+    # for key, value of survey.questions
+    #   survey.questions[key] = sanitize(value).xss()
+    # return cb(survey)
 
     pg.connect pgConfig, (err, client, done) ->
       throw err if err
@@ -72,7 +75,7 @@ module.exports =
       client.query respondent_query, (err, result) ->
         done()
         return cb(err) if err
-        respondent_id = result.rows[0].sfid
+
         questions = ({qid: k, response: v} for k,v of survey.questions)
 
         async.map questions
@@ -81,12 +84,10 @@ module.exports =
             question_query = """
               INSERT INTO survey_question_response__c (
                 survey_question__c,
-                response_option__c,
-                survey_respondent__c
+                response_option__c
               ) VALUES (
                 '#{question.qid}',
-                '#{question.response}',
-                '#{respondent_id}'
+                '#{question.response}'
               ) returning id;
             """
             client.query question_query, (err, result) ->
