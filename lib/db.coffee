@@ -3,32 +3,41 @@ pgConfig = require("./pg-config")()
 async = require("async")
 
 module.exports =
-  getSurvey: (cb) ->
+
+  getAllSurveys: (cb) ->
+    pg.connect pgConfig, (err, client, done) ->
+      throw err if err
+
+      client.query "SELECT name, sfid FROM survey__c;", (err, result) ->
+        done()
+        throw err if err
+        cb(result.rows)
+
+  getSurvey: (sfid, cb) ->
     survey = {}
     pg.connect pgConfig, (err, client, done) ->
       throw err if err
 
-      client.query "SELECT sfid FROM survey__c;", (err, result) ->
+      q = """
+        select question__c, sfid, response_type__c, survey_del__c
+        from survey_question__c where survey_del__c='#{sfid}';
+      """
+
+      client.query q, (err, result) ->
         done()
         throw err if err
-        survey.id = result.rows[0].sfid
+        survey.questions = result.rows
 
-        q = "select question__c,sfid,response_type__c, survey_del__c from survey_question__c where survey_del__c='#{survey.id}';"
-        client.query q, (err, result) ->
+        client.query "select answer__c, survey_question__c, sfid from survey_question_answer__c;", (err, result) ->
           done()
           throw err if err
-          survey.questions = result.rows
 
-          client.query "select answer__c, survey_question__c, sfid from survey_question_answer__c;", (err, result) ->
-            done()
-            throw err if err
+          survey.questions = survey.questions.map (question) ->
+            question.answers = result.rows.filter (answer) ->
+              answer.survey_question__c is question.sfid
+            return question
 
-            survey.questions = survey.questions.map (question) ->
-              question.answers = result.rows.filter (answer) ->
-                answer.survey_question__c is question.sfid
-              return question
-
-            cb(survey)
+          cb(survey)
 
   saveSurvey: (survey, cb) ->
     # return cb(null, survey)
@@ -38,20 +47,14 @@ module.exports =
       respondent_query = """
         INSERT INTO survey_respondent__c (
           survey__c,
-          respondent_firstname__c,
-          respondent_lastname__c,
           survey_completed_location__latitude__s,
           survey_completed_location__longitude__s
         ) VALUES (
           '#{survey.id}',
-          '#{survey.firstname}',
-          '#{survey.lastname}',
           '#{survey.latitude}',
           '#{survey.longitude}'
         ) returning id;
       """
-
-      # return cb(err, q.replace(/\n/g, ''))
 
       client.query respondent_query, (err, result) ->
         done()

@@ -1,30 +1,17 @@
-<h1>Welcome to Dreamforce!</h1>
+{{#if thanks}}
+  <p>Thanks for taking the survey!</p>
 
-<form action="/survey" method="post">
+{{else}}
 
-  <input type="hidden" name="id" value="{{id}}">
-  <input type="hidden" name="latitude" id="latitude">
-  <input type="hidden" name="longitude" id="longitude">
+  <h1>Choose a Survey</h1>
 
-  <ul class="questions">
-
-    <li>
-      <label for="firstnameInput">What's your first name?</label>
-      <input type="text" name="firstname" id="firstnameInput">
-    </li>
-
-    <li>
-      <label for="lastnameInput">What's your last name?</label>
-      <input type="text" name="lastname" id="lastnameInput">
-    </li>
-
-    {{#each questions}}
-      <li class="{{response_type__c}}">
-        <label>{{question__c}}</label>
-        {{{answerInput}}}
+  <ul class="surveys">
+    {{#each surveys}}
+      <li>
+        <a href="/{{sfid}}">{{name}}</a>
       </li>
     {{/each}}
   </ul>
 
-  <input type="submit" value="Submit">
-</form>
+{{/if}}
+

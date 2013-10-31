@@ -1,0 +1,19 @@
+<h1>Welcome to Dreamforce!</h1>
+
+<form action="/surveys" method="post">
+
+  <input type="hidden" name="id" value="{{id}}">
+  <input type="hidden" name="latitude" id="latitude">
+  <input type="hidden" name="longitude" id="longitude">
+
+  <ul class="questions">
+    {{#each questions}}
+      <li class="{{response_type__c}}">
+        <label>{{question__c}}</label>
+        {{{answerInput}}}
+      </li>
+    {{/each}}
+  </ul>
+
+  <input type="submit" value="Submit">
+</form>
