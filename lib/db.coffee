@@ -18,26 +18,31 @@ module.exports =
     pg.connect pgConfig, (err, client, done) ->
       throw err if err
 
-      q = """
-        select question__c, sfid, response_type__c, survey_del__c
-        from survey_question__c where survey_del__c='#{sfid}';
-      """
-
-      client.query q, (err, result) ->
+      client.query "SELECT name, sfid FROM survey__c where sfid='#{sfid}';", (err, result) ->
         done()
         throw err if err
-        survey.questions = result.rows
+        survey = result.rows[0]
 
-        client.query "select answer__c, survey_question__c, sfid from survey_question_answer__c;", (err, result) ->
+        q = """
+          select name, question__c, sfid, response_type__c, survey_del__c
+          from survey_question__c where survey_del__c='#{sfid}';
+        """
+
+        client.query q, (err, result) ->
           done()
           throw err if err
+          survey.questions = result.rows
 
-          survey.questions = survey.questions.map (question) ->
-            question.answers = result.rows.filter (answer) ->
-              answer.survey_question__c is question.sfid
-            return question
+          client.query "select answer__c, survey_question__c, sfid from survey_question_answer__c;", (err, result) ->
+            done()
+            throw err if err
 
-          cb(survey)
+            survey.questions = survey.questions.map (question) ->
+              question.answers = result.rows.filter (answer) ->
+                answer.survey_question__c is question.sfid
+              return question
+
+            cb(survey)
 
   saveSurvey: (survey, cb) ->
     # return cb(null, survey)

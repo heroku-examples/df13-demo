@@ -1,3 +1,9 @@
+@font-face {
+  font-family: vag;
+  src: url("/public/vagroundedstd-thin-webfont.woff");
+  font-weight: 400;
+  font-style: normal;
+}
 *,
 *:before,
 *:after {
@@ -6,11 +12,11 @@
   box-sizing: border-box;
 }
 body {
-  font-family: "helvetica neue", helvetica;
+  font-family: vag;
   font-size: 18px;
-  background-color: #1a1b23;
+  background-color: #4caee2;
   padding: 0;
-  color: #afb1c7;
+  color: #0d477b;
 }
 .content {
   margin-left: auto;
@@ -25,14 +31,14 @@ h2,
 h3,
 h4 {
   font-weight: bold;
-  color: #fff;
+  color: #0d477b;
 }
 h1 {
   margin: 0;
   padding: 0;
 }
 label {
-  font-family: "helvetica neue", helvetica;
+  font-family: vag;
   list-style: none;
   margin: 0;
   padding: 0 0 6px 0;
@@ -40,7 +46,7 @@ label {
   line-height: 1.5;
 }
 a {
-  color: #afb1c7;
+  color: #0d477b;
 }
 ul.questions,
 ul.surveys {
@@ -63,8 +69,8 @@ input[type="text"] {
   font-family: "helvetica neue", helvetica, arial, sans;
   font-size: 24px;
   padding: 8px;
-  color: #afb1c7;
-  background-color: #000;
+  color: #0d477b;
+  background-color: #fff;
   border-radius: 6px;
   border: none;
   outline: none;
@@ -73,11 +79,11 @@ input[type="text"] {
   -webkit-appearance: none;
 }
 input[type="submit"] {
-  font-family: "helvetica neue", helvetica;
+  font-family: vag;
   font-size: 24px;
   padding: 8px;
-  background-color: #afb1c7;
-  color: #000;
+  background-color: #0d477b;
+  color: #fff;
   border-radius: 6px;
   outline: none;
   display: block;
