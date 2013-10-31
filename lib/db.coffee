@@ -41,6 +41,14 @@ module.exports =
 
   saveSurvey: (survey, cb) ->
     # return cb(null, survey)
+
+    # Watch out for XSS
+    for key, value of survey
+      survey[key] = sanitize(value).xss() unless typeof(value) is "object"
+
+    for key, value of survey.questions
+      survey.questions[key] = sanitize(value).xss()
+
     pg.connect pgConfig, (err, client, done) ->
       throw err if err
 

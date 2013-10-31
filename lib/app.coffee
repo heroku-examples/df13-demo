@@ -31,14 +31,6 @@ app.get "/:survey_id", (req, res) ->
     res.render "survey", survey
 
 app.post "/surveys", (req, res) ->
-
-  # Watch out for XSS
-  for key, value of req.body
-    req.body[key] = sanitize(value).xss() unless typeof(value) is "object"
-
-  for key, value of req.body.questions
-    req.body.questions[key] = sanitize(value).xss()
-
   db.saveSurvey req.body, (err, survey) ->
     return res.json(500, {error: err}) if err
     # res.json survey
