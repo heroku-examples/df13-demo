@@ -1,17 +1,18 @@
 ;(function(e,t,n){function i(n,s){if(!t[n]){if(!e[n]){var o=typeof require=="function"&&require;if(!s&&o)return o(n,!0);if(r)return r(n,!0);throw new Error("Cannot find module '"+n+"'")}var u=t[n]={exports:{}};e[n][0](function(t){var r=e[n][1][t];return i(r?r:t)},u,u.exports)}return t[n].exports}var r=typeof require=="function"&&require;for(var s=0;s<n.length;s++)i(n[s]);return i})({1:[function(require,module,exports){
 (function() {
-  window.geo = require('geolocation-stream')();
-
-  if (document.querySelector("#latitude")) {
-    geo.on("data", function(position) {
-      console.log(position);
-      document.querySelector("#latitude").value = position.coords.latitude;
-      return document.querySelector("#longitude").value = position.coords.longitude;
-    });
-    geo.on("error", function(err) {
-      return console.error("geolocation error", err);
-    });
-  }
+  document.addEventListener('DOMContentLoaded', function() {
+    window.geo = require('geolocation-stream')();
+    if (document.querySelector("#latitude")) {
+      geo.on("data", function(position) {
+        console.log(position);
+        document.querySelector("#latitude").value = position.coords.latitude;
+        return document.querySelector("#longitude").value = position.coords.longitude;
+      });
+      return geo.on("error", function(err) {
+        return console.error("geolocation error", err);
+      });
+    }
+  });
 
 }).call(this);
 
