@@ -1,6 +1,9 @@
-@import "themes/salesforce"
-// @import "themes/heroku"
-// @import "themes/lato"
+@import "themes/roboto"
+
+box-shadow(args...)
+  -webkit-box-shadow args
+  -moz-box-shadow args
+  box-shadow args
 
 // Styles
 // -----------------------------------------------------------------
@@ -10,32 +13,42 @@
   -webkit-box-sizing border-box
   box-sizing border-box
 
+html
+  padding 0
+  margin 0
 
 body
   fancy-font()
   font-size 18px
+  font-weight 300
   background-color backgroundColor
-  padding 0
+  padding 15px
   color textColor
 
 .content
   margin-left auto
   margin-right auto
+  margin-top 10px
+  margin-bottom 20px
   position relative
-  min-width 320px
+  width: 100%
   max-width 640px
-  padding 20px
+  padding 15px
+  background: white
+  box-shadow 1px 2px 5px rgba(0,0,0,0.2)
 
 h1,h2,h3,h4
-  font-weight bold
+  font-weight 300
   color headingColor
 
 h1
+  font-size 24px
   margin 0
   padding 0
 
 label
   fancy-font()
+  font-weight 300
   list-style none
   margin 0
   padding 0 0 6px 0
@@ -43,7 +56,7 @@ label
   line-height: 1.5
 
 a
-  color textColor
+  color headingColor
 
 ul
   &.questions, &.surveys
@@ -62,27 +75,30 @@ div
 
 input[type="text"]
   normal-font()
-  font-size 24px
-  padding 8px
+  font-weight 300
+  font-size 18px
+  padding 5px
   color textColor
   background-color inputBackgroundColor
-  border-radius 6px
-  border: none
+  border-radius 2px
+  border 1px solid #CCC
   outline none
   display block
   width 100%
   -webkit-appearance none
+  &:focus
+    border-left 3px solid #3498DB
 
 input[type="submit"]
   fancy-font()
-  font-size 24px
-  padding 8px
-  background-color textColor
+  font-size 18px
+  font-weight 300
+  padding 5px 15px
+  background-color #2ECC71
   color textColorInverse
-  border-radius 6px
+  border-radius 2px
   outline none
-  display block
-  width 100%
+  display inline-block
   -webkit-appearance none
   margin 20px 0
   border none
