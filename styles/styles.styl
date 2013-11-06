@@ -1,5 +1,8 @@
 @import "themes/roboto"
 
+// Mixins
+// -----------------------------------------------------------------
+
 box-shadow(args...)
   -webkit-box-shadow args
   -moz-box-shadow args
@@ -28,14 +31,21 @@ body
 .content
   margin-left auto
   margin-right auto
-  margin-top 10px
   margin-bottom 20px
   position relative
   width: 100%
-  max-width 640px
+  max-width 480px
   padding 15px
   background: white
   box-shadow 1px 2px 5px rgba(0,0,0,0.2)
+  margin-top 10px
+  transition all .5s
+  opacity 0
+  -webkit-transform scale(0.5)
+
+  &.active
+    opacity 1
+    -webkit-transform scale(1)
 
 h1,h2,h3,h4
   font-weight 300
@@ -52,7 +62,7 @@ label
   list-style none
   margin 0
   padding 0 0 6px 0
-  font-size 20px
+  font-size 16px
   line-height: 1.5
 
 a
@@ -64,7 +74,7 @@ ul
     margin 0
     padding 0
     > li
-      margin 10px 0
+      margin 0
       padding 10px 0
 
 div
@@ -78,6 +88,7 @@ input[type="text"]
   font-weight 300
   font-size 18px
   padding 5px
+  margin: 20px 0
   color textColor
   background-color inputBackgroundColor
   border-radius 2px
@@ -86,8 +97,10 @@ input[type="text"]
   display block
   width 100%
   -webkit-appearance none
+  outline 15px solid transparent
+  transition all .2s
   &:focus
-    border-left 3px solid #3498DB
+    outline 15px solid #EEE
 
 input[type="submit"]
   fancy-font()

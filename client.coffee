@@ -2,6 +2,9 @@ document.addEventListener 'DOMContentLoaded', ->
 
   window.geo = require('geolocation-stream')()
 
+  #
+  document.querySelector(".content").classList.add('active')
+
   if document.querySelector("#latitude")
 
     geo.on "data", (position) ->
