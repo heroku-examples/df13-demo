@@ -88,19 +88,30 @@ input[type="text"]
   font-weight 300
   font-size 18px
   padding 5px
+  padding-left 30px
   margin: 20px 0
   color textColor
   background-color inputBackgroundColor
   border-radius 2px
-  border 1px solid #CCC
+  border 1px solid #999
   outline none
   display block
   width 100%
   -webkit-appearance none
   outline 15px solid transparent
   transition all .2s
+  background white url('pencil.svg') no-repeat 10px center
+  opacity 0.3
   &:focus
     outline 15px solid #EEE
+    opacity 1
+    // background-position 10px center
+
+input[type="radio"]
+  &:focus
+    // outline: thin dotted #333
+    // outline: 5px auto -webkit-focus-ring-color
+    // outline-offset: -2px
 
 input[type="submit"]
   fancy-font()

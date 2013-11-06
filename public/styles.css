@@ -84,20 +84,24 @@ input[type="text"] {
   font-weight: 300;
   font-size: 18px;
   padding: 5px;
+  padding-left: 30px;
   margin: 20px 0;
   color: #7a8788;
   background-color: #fff;
   border-radius: 2px;
-  border: 1px solid #ccc;
+  border: 1px solid #999;
   outline: none;
   display: block;
   width: 100%;
   -webkit-appearance: none;
   outline: 15px solid transparent;
   transition: all 0.2s;
+  background: #fff url("pencil.svg") no-repeat 10px center;
+  opacity: 0.3;
 }
 input[type="text"]:focus {
   outline: 15px solid #eee;
+  opacity: 1;
 }
 input[type="submit"] {
   font-family: Roboto, "helvetica neue", helvetica;
