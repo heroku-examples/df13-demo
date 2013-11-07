@@ -11,8 +11,6 @@ app.configure ->
   app.use app.router
   app.engine "handlebars", require("./handlebars-config")
   app.set "view engine", "handlebars"
-  # app.use require('./stylus-config')
-  app.use(require('stylus').middleware(__dirname + '/public'));
   app.use '/public/', express.static("public")
 
 app.get "/", (req, res) ->
