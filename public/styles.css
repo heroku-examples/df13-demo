@@ -17,13 +17,16 @@ body {
   padding: 15px;
   color: #7a8788;
 }
-.content {
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 20px;
+#content {
   position: relative;
+  margin: 0 auto 20px auto;
   width: 100%;
   max-width: 480px;
+  padding: 0;
+}
+#content li {
+  list-style: none;
+  margin: 0;
   padding: 15px;
   background: #fff;
   -webkit-box-shadow: 1px 2px 5px rgba(0,0,0,0.2);
@@ -32,11 +35,83 @@ body {
   margin-top: 10px;
   transition: all 0.5s;
   opacity: 0;
-  -webkit-transform: scale(0.5);
+  display: block;
+  -webkit-transform: translate(300px, 0);
+  -moz-transform: translate(300px, 0);
+  transform: translate(300px, 0);
 }
-.content.active {
+#content li:nth-child(1) {
+  transition-delay: 0.15s;
+}
+#content li:nth-child(2) {
+  transition-delay: 0.3s;
+}
+#content li:nth-child(3) {
+  transition-delay: 0.44999999999999996s;
+}
+#content li:nth-child(4) {
+  transition-delay: 0.6s;
+}
+#content li:nth-child(5) {
+  transition-delay: 0.75s;
+}
+#content li:nth-child(6) {
+  transition-delay: 0.8999999999999999s;
+}
+#content li:nth-child(7) {
+  transition-delay: 1.05s;
+}
+#content li:nth-child(8) {
+  transition-delay: 1.2s;
+}
+#content li:nth-child(9) {
+  transition-delay: 1.3499999999999999s;
+}
+#content li:nth-child(10) {
+  transition-delay: 1.5s;
+}
+#content li:nth-child(11) {
+  transition-delay: 1.65s;
+}
+#content li:nth-child(12) {
+  transition-delay: 1.7999999999999998s;
+}
+#content li:nth-child(13) {
+  transition-delay: 1.95s;
+}
+#content li:nth-child(14) {
+  transition-delay: 2.1s;
+}
+#content li:nth-child(15) {
+  transition-delay: 2.25s;
+}
+#content li:nth-child(16) {
+  transition-delay: 2.4s;
+}
+#content li:nth-child(17) {
+  transition-delay: 2.55s;
+}
+#content li:nth-child(18) {
+  transition-delay: 2.6999999999999997s;
+}
+#content li:nth-child(19) {
+  transition-delay: 2.85s;
+}
+#content li:nth-child(20) {
+  transition-delay: 3s;
+}
+#content li.active {
   opacity: 1;
-  -webkit-transform: scale(1);
+  -webkit-transform: translate(0, 0);
+  -moz-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+#content li.transparent-bg {
+  background: transparent;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  padding: 0;
 }
 h1,
 h2,
@@ -107,8 +182,9 @@ input[type="submit"] {
   font-family: Roboto, "helvetica neue", helvetica;
   font-size: 18px;
   font-weight: 300;
-  padding: 5px 15px;
-  background-color: #2ecc71;
+  padding: 8px 15px;
+  width: 100%;
+  background-color: #3498db;
   color: #eee;
   border-radius: 2px;
   outline: none;

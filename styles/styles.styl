@@ -1,4 +1,18 @@
-@import "themes/roboto"
+// Theme
+// -----------------------------------------------------------------
+
+backgroundColor = #20C0A1
+headingColor = #3498DB
+textColor = #7A8788
+textColorInverse = #EEE
+inputBackgroundColor = white
+
+fancy-font()
+  font-family Roboto, "helvetica neue", helvetica
+
+normal-font()
+  font-family Roboto, "helvetica neue", helvetica
+
 
 // Mixins
 // -----------------------------------------------------------------
@@ -7,6 +21,11 @@ box-shadow(args...)
   -webkit-box-shadow args
   -moz-box-shadow args
   box-shadow args
+
+transform(args...)
+  -webkit-transform args
+  -moz-transform args
+  transform args
 
 // Styles
 // -----------------------------------------------------------------
@@ -28,24 +47,37 @@ body
   padding 15px
   color textColor
 
-.content
-  margin-left auto
-  margin-right auto
-  margin-bottom 20px
+#content
   position relative
-  width: 100%
+  margin 0 auto 20px auto
+  width 100%
   max-width 480px
-  padding 15px
-  background: white
-  box-shadow 1px 2px 5px rgba(0,0,0,0.2)
-  margin-top 10px
-  transition all .5s
-  opacity 0
-  -webkit-transform scale(0.5)
+  padding 0
 
-  &.active
-    opacity 1
-    -webkit-transform scale(1)
+  li
+    list-style none
+    margin 0
+    padding 15px
+    background: white
+    box-shadow 1px 2px 5px rgba(0,0,0,0.2)
+    margin-top 10px
+    transition all .5s
+    opacity 0
+    display block
+    transform translate(300px, 0)
+
+    for num in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+      &:nth-child({num})
+        transition-delay: 0.15s * (num)
+
+    &.active
+      opacity 1
+      transform translate(0, 0)
+
+    &.transparent-bg
+      background transparent
+      box-shadow none
+      padding 0
 
 h1,h2,h3,h4
   font-weight 300
@@ -117,8 +149,9 @@ input[type="submit"]
   fancy-font()
   font-size 18px
   font-weight 300
-  padding 5px 15px
-  background-color #2ECC71
+  padding 8px 15px
+  width 100%
+  background-color headingColor
   color textColorInverse
   border-radius 2px
   outline none

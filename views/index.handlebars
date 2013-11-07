@@ -1,19 +1,21 @@
 {{#if thanks}}
-  <p>
-    Thanks for taking the survey!
-    Care to <a href="/">take another?</a>
-  </p>
+  <li>
+    <p>
+      Thanks for taking the survey!
+      Care to <a href="/">take another?</a>
+    </p>
+  </li>
 {{else}}
 
-  <h1>Choose a Survey</h1>
+  <li>
+    <h1>Choose a Survey</h1>
+  </li>
 
-  <ul class="surveys">
-    {{#each surveys}}
-      <li>
-        <a href="/surveys/{{sfid}}">{{name}}</a>
-      </li>
-    {{/each}}
-  </ul>
+  {{#each surveys}}
+    <li>
+      <a href="/surveys/{{sfid}}">{{name}}</a>
+    </li>
+  {{/each}}
 
 {{/if}}
 

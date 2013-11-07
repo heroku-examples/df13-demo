@@ -1,4 +1,6 @@
-<h1>{{name}}</h1>
+<li>
+  <h1>{{name}}</h1>
+</li>
 
 <form action="/surveys" method="post">
 
@@ -6,14 +8,15 @@
   <input type="hidden" name="latitude" id="latitude">
   <input type="hidden" name="longitude" id="longitude">
 
-  <ul class="questions">
-    {{#each questions}}
-      <li class="{{response_type__c}}">
-        <label>{{question__c}}</label>
-        {{{answerInput}}}
-      </li>
-    {{/each}}
-  </ul>
+  {{#each questions}}
+    <li class="{{response_type__c}}">
+      <label>{{question__c}}</label>
+      {{{answerInput}}}
+    </li>
+  {{/each}}
 
-  <input type="submit" value="Submit">
+  <li class="transparent-bg">
+    <input type="submit" value="Submit">
+  </li>
+
 </form>

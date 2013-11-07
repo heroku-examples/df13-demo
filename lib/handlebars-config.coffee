@@ -1,5 +1,5 @@
 module.exports = require("express3-handlebars")
-  defaultLayout: "main"
+  defaultLayout: "layout"
   helpers:
     answerInput: () ->
       switch this.response_type__c

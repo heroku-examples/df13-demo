@@ -1,8 +1,13 @@
 ;(function(e,t,n){function i(n,s){if(!t[n]){if(!e[n]){var o=typeof require=="function"&&require;if(!s&&o)return o(n,!0);if(r)return r(n,!0);throw new Error("Cannot find module '"+n+"'")}var u=t[n]={exports:{}};e[n][0](function(t){var r=e[n][1][t];return i(r?r:t)},u,u.exports)}return t[n].exports}var r=typeof require=="function"&&require;for(var s=0;s<n.length;s++)i(n[s]);return i})({1:[function(require,module,exports){
 (function() {
-  document.addEventListener('DOMContentLoaded', function() {
-    window.geo = require('geolocation-stream')();
-    document.querySelector(".content").classList.add('active');
+  window.geo = require('geolocation-stream')();
+
+  window.domready = require('domready');
+
+  domready(function() {
+    [].forEach.call(document.querySelectorAll("#content li"), function(element) {
+      return element.classList.add('active');
+    });
     if (document.querySelector("#latitude")) {
       geo.on("data", function(position) {
         console.log(position);
@@ -18,7 +23,7 @@
 }).call(this);
 
 
-},{"geolocation-stream":2}],2:[function(require,module,exports){
+},{"geolocation-stream":2,"domready":3}],2:[function(require,module,exports){
 var stream = require('stream')
 var util = require('util')
 
@@ -58,7 +63,64 @@ GeolocationStream.prototype.onError = function(position) {
   this.emit('error', position)
 }
 
-},{"stream":3,"util":4}],3:[function(require,module,exports){
+},{"stream":4,"util":5}],3:[function(require,module,exports){
+/*!
+  * domready (c) Dustin Diaz 2012 - License MIT
+  */
+!function (name, definition) {
+  if (typeof module != 'undefined') module.exports = definition()
+  else if (typeof define == 'function' && typeof define.amd == 'object') define(definition)
+  else this[name] = definition()
+}('domready', function (ready) {
+
+  var fns = [], fn, f = false
+    , doc = document
+    , testEl = doc.documentElement
+    , hack = testEl.doScroll
+    , domContentLoaded = 'DOMContentLoaded'
+    , addEventListener = 'addEventListener'
+    , onreadystatechange = 'onreadystatechange'
+    , readyState = 'readyState'
+    , loadedRgx = hack ? /^loaded|^c/ : /^loaded|c/
+    , loaded = loadedRgx.test(doc[readyState])
+
+  function flush(f) {
+    loaded = 1
+    while (f = fns.shift()) f()
+  }
+
+  doc[addEventListener] && doc[addEventListener](domContentLoaded, fn = function () {
+    doc.removeEventListener(domContentLoaded, fn, f)
+    flush()
+  }, f)
+
+
+  hack && doc.attachEvent(onreadystatechange, fn = function () {
+    if (/^c/.test(doc[readyState])) {
+      doc.detachEvent(onreadystatechange, fn)
+      flush()
+    }
+  })
+
+  return (ready = hack ?
+    function (fn) {
+      self != top ?
+        loaded ? fn() : fns.push(fn) :
+        function () {
+          try {
+            testEl.doScroll('left')
+          } catch (e) {
+            return setTimeout(function() { ready(fn) }, 50)
+          }
+          fn()
+        }()
+    } :
+    function (fn) {
+      loaded ? fn() : fns.push(fn)
+    })
+})
+
+},{}],4:[function(require,module,exports){
 var events = require('events');
 var util = require('util');
 
@@ -179,7 +241,7 @@ Stream.prototype.pipe = function(dest, options) {
   return dest;
 };
 
-},{"events":5,"util":4}],4:[function(require,module,exports){
+},{"events":6,"util":5}],5:[function(require,module,exports){
 var events = require('events');
 
 exports.isArray = isArray;
@@ -532,7 +594,7 @@ exports.format = function(f) {
   return str;
 };
 
-},{"events":5}],6:[function(require,module,exports){
+},{"events":6}],7:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -586,7 +648,7 @@ process.chdir = function (dir) {
     throw new Error('process.chdir is not supported');
 };
 
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 (function(process){if (!process.EventEmitter) process.EventEmitter = function () {};
 
 var EventEmitter = exports.EventEmitter = process.EventEmitter;
@@ -772,5 +834,5 @@ EventEmitter.prototype.listeners = function(type) {
 };
 
 })(require("__browserify_process"))
-},{"__browserify_process":6}]},{},[1])
+},{"__browserify_process":7}]},{},[1])
 ;

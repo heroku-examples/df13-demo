@@ -29,7 +29,8 @@
     "async": "~0.2.9",
     "validator": "~1.5.1",
     "nib": "~1.0.1",
-    "stylus": "~0.39.1"
+    "stylus": "~0.39.1",
+    "domready": "~0.2.13"
   },
   "devDependencies": {
     "supertest": "~0.8.0",

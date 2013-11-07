@@ -1,10 +1,13 @@
-document.addEventListener 'DOMContentLoaded', ->
+window.geo = require('geolocation-stream')()
+window.domready = require('domready')
 
-  window.geo = require('geolocation-stream')()
+domready ->
 
-  #
-  document.querySelector(".content").classList.add('active')
+  # Animate all content
+  [].forEach.call document.querySelectorAll("#content li"), (element) ->
+    element.classList.add('active')
 
+  # Append geodata to hidden form fields
   if document.querySelector("#latitude")
 
     geo.on "data", (position) ->
