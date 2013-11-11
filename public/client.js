@@ -8,6 +8,9 @@
     [].forEach.call(document.querySelectorAll("#content li"), function(element) {
       return element.classList.add('active');
     });
+    if (document.querySelector('h1') && document.querySelector('h1').innerHTML.match(/coffee|cafe/ig)) {
+      document.body.classList.add('coffee');
+    }
     if (document.querySelector("#latitude")) {
       geo.on("data", function(position) {
         console.log(position);

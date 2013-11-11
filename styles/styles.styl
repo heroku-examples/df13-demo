@@ -1,7 +1,7 @@
 // Theme
 // -----------------------------------------------------------------
 
-backgroundColor = #20C0A1
+backgroundColor = #381E11
 headingColor = #3498DB
 textColor = #7A8788
 textColorInverse = #EEE
@@ -42,9 +42,11 @@ body
   fancy-font()
   font-size 18px
   font-weight 300
-  background-color backgroundColor
   padding 15px
   color textColor
+  background-color backgroundColor
+  &.coffee
+    background backgroundColor url('coffee-beans.jpg')
 
 #content
   position relative
@@ -63,6 +65,7 @@ body
     transition all .5s
     opacity 0
     display block
+    border-radius 2px
     transform translate(300px, 0)
 
     for num in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
@@ -86,6 +89,7 @@ h1
   font-size 24px
   margin 0
   padding 0
+  text-align: center
 
 label
   fancy-font()
@@ -162,3 +166,7 @@ input[type="submit"]
   margin 20px 0
   border none
   cursor pointer
+
+img.coffee
+  display: block
+  margin: 20px auto 20px auto

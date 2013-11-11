@@ -7,6 +7,10 @@ domready ->
   [].forEach.call document.querySelectorAll("#content li"), (element) ->
     element.classList.add('active')
 
+  # Append a coffee background on surveys containing the word coffee
+  if document.querySelector('h1') and document.querySelector('h1').innerHTML.match(/coffee|cafe/ig)
+    document.body.classList.add('coffee')
+
   # Append geodata to hidden form fields
   if document.querySelector("#latitude")
 
