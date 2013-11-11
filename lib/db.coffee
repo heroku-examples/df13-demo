@@ -24,6 +24,7 @@ module.exports =
         done()
         throw err if err
         survey.description = result.rows[0].description__c
+        survey.caffeinated = survey.description.match(/coffee|cafe/ig)
         survey.sfid = result.rows[0].sfid
 
         q = """
@@ -49,14 +50,15 @@ module.exports =
 
   saveSurvey: (survey, cb) ->
 
+
     # Watch out for XSS
-    # for key, value of survey
-    #   survey[key] = sanitize(value).xss() unless typeof(value) is "object"
+    for key, value of survey
+      survey[key] = sanitize(value).xss() unless typeof(value) is "object"
 
-    # for key, value of survey.questions
-    #   survey.questions[key] = sanitize(value).xss()
-    # return cb(survey)
+    for key, value of survey.questions
+      survey.questions[key] = sanitize(value).xss()
 
+    # Save respondent info
     pg.connect pgConfig, (err, client, done) ->
       throw err if err
 
@@ -75,9 +77,10 @@ module.exports =
       client.query respondent_query, (err, result) ->
         done()
         return cb(err) if err
+        return cb(null, result)
 
+        # Save responses
         questions = ({qid: k, response: v} for k,v of survey.questions)
-
         async.map questions
         ,
           (question, callback) ->
