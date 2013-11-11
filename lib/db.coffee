@@ -9,7 +9,7 @@ module.exports =
     pg.connect pgConfig, (err, client, done) ->
       throw err if err
 
-      client.query "SELECT name, sfid FROM survey__c;", (err, result) ->
+      client.query "SELECT description__c, sfid FROM survey__c;", (err, result) ->
         done()
         throw err if err
         cb(result.rows)
@@ -19,11 +19,11 @@ module.exports =
     pg.connect pgConfig, (err, client, done) ->
       throw err if err
 
-      q = "SELECT name, sfid FROM survey__c where sfid='#{sfid}' LIMIT 1;"
+      q = "SELECT description__c, sfid FROM survey__c where sfid='#{sfid}' LIMIT 1;"
       client.query q, (err, result) ->
         done()
         throw err if err
-        survey.name = result.rows[0].name
+        survey.description = result.rows[0].description__c
         survey.sfid = result.rows[0].sfid
 
         q = """

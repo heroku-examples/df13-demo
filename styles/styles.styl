@@ -13,7 +13,6 @@ fancy-font()
 normal-font()
   font-family Roboto, "helvetica neue", helvetica
 
-
 // Mixins
 // -----------------------------------------------------------------
 
@@ -99,6 +98,9 @@ label
 
 a
   color headingColor
+  text-decoration none
+  &:hover
+    text-decoration underline
 
 ul
   &.questions, &.surveys
