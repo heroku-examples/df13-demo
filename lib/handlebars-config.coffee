@@ -31,3 +31,15 @@ module.exports = require("express3-handlebars")
               </div>
             """
           ).join("\n")
+
+        when "Picklist"
+          options = this.answers.map((answer, i) =>
+            id = this.sfid + "-" + i
+            """
+              <option value="#{answer.answer__c}">#{answer.answer__c}</option>
+            """
+          ).join("\n")
+          """
+            <select name="questions[#{this.sfid}]">#{options}</select>
+          """
+
