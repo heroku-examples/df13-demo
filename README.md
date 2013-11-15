@@ -1,4 +1,4 @@
-# Dreamforce 2013 Survey Demo
+# Dreamforce 2013 Opinion Demo
 
 A node app demonstrating Heroku, CloudConnect, and Force.com
 

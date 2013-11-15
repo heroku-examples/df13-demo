@@ -177,13 +177,13 @@ a:hover {
   text-decoration: underline;
 }
 ul.questions,
-ul.surveys {
+ul.opinions {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 ul.questions > li,
-ul.surveys > li {
+ul.opinions > li {
   margin: 0;
   padding: 10px 0;
 }

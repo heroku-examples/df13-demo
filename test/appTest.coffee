@@ -2,11 +2,11 @@ assert = require "assert"
 supertest = require "supertest"
 app = require "../lib/app"
 
-describe "GET /survey", ->
+describe "GET /opinion", ->
 
-  it "returns a JSON representation of the survey", (done) ->
+  it "returns a JSON representation of the opinion", (done) ->
     supertest(app)
-      .get("/survey")
+      .get("/opinion")
       .expect("Content-Type", /json/)
       .expect(200)
       .end (err, res) ->
@@ -19,7 +19,7 @@ describe "GET /survey", ->
 
         done()
 
-describe "POST /survey", ->
+describe "POST /opinion", ->
 
   # pg.connect connString, (err, client, finished) ->
   #   return console.error("error running query", err)  if err
@@ -32,7 +32,7 @@ describe "POST /survey", ->
   #     finished()
   #     done()
 
-  it "saves surveys", (done) ->
+  it "saves opinions", (done) ->
 
     payload =
       name: "foo"
@@ -42,7 +42,7 @@ describe "POST /survey", ->
         express: "1.0.0"
 
     supertest(app)
-      .post("/survey")
+      .post("/opinion")
       .send(payload)
       .set('Accept', 'application/json')
       .expect("Content-Type", /json/)

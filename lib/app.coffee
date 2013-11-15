@@ -14,22 +14,22 @@ app.configure ->
   app.use '/public/', express.static("public")
 
 app.get "/", (req, res) ->
-  db.getAllSurveys (surveys) ->
+  db.getAllOpinions (opinions) ->
     res.render "index",
-      surveys: surveys
+      opinions: opinions
       thanks: req.url.match(/thanks/)
 
 app.get "/schema", (req, res) ->
-  db.getAllSurveys (surveys) ->
-    db.getSurvey surveys[0].sfid, (survey) ->
+  db.getAllOpinions (opinions) ->
+    db.getOpinions opinions[0].sfid, (opinion) ->
       res.json survey
 
-app.post "/surveys", (req, res) ->
-  db.saveSurvey req.body, (err, survey) ->
+app.post "/opinions", (req, res) ->
+  db.saveOpinion req.body, (err, opinion) ->
     return res.json(500, {error: err}) if err
-    # res.json survey
+    # res.json opinion
     res.redirect("/?thanks")
 
-app.get "/surveys/:survey_id", (req, res) ->
-  db.getSurvey req.params.survey_id, (survey) ->
-    res.render "survey", survey
+app.get "/opinions/:opinion_id", (req, res) ->
+  db.getOpinions req.params.opinion_id, (opinion) ->
+    res.render "opinion", opinion
