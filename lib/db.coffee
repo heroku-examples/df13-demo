@@ -29,7 +29,7 @@ module.exports =
 
         q = """
           select name, question__c, sfid, response_type__c, survey_del__c
-          from survey_question__c where survey_del__c='#{sfid}';
+          from survey_question__c where survey_question__c.Is_Active__c = true and survey_del__c='#{sfid}';
         """
 
         client.query q, (err, result) ->
