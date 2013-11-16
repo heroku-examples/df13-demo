@@ -9,7 +9,7 @@ module.exports =
     pg.connect pgConfig, (err, client, done) ->
       throw err if err
 
-      client.query "SELECT description__c, sfid FROM opinion__c where sync_to_mobile_app__c is null;", (err, result) ->
+      client.query "SELECT description__c, sfid FROM opinion__c where sync_to_mobile_app__c = true;", (err, result) ->
         done()
         throw err if err
         cb(result.rows)
