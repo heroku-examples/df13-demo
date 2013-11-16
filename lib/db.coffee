@@ -24,7 +24,7 @@ module.exports =
         done()
         throw err if err
         opinion.description = result.rows[0].description__c
-        opinion.caffeinated = opinion.description.match(/coffee|cafe/ig)
+        opinion.caffeinated = true; #opinion.description.match(/coffee|cafe/ig)
         opinion.sfid = result.rows[0].sfid
 
         q = """
