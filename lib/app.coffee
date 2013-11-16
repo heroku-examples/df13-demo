@@ -32,4 +32,7 @@ app.post "/opinions", (req, res) ->
 
 app.get "/opinions/:opinion_id", (req, res) ->
   db.getOpinion req.params.opinion_id, (opinion) ->
+    res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate")
+    res.setHeader("Pragma", "no-cache")
+    res.setHeader("Expires", "0")
     res.render "opinion", opinion
