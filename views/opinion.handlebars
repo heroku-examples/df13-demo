@@ -1,0 +1,26 @@
+<li>
+  {{#if caffeinated}}
+    <img src="/public/coffee-cup.svg" class="coffee">
+  {{/if}}
+
+  <h1>{{description}}</h1>
+</li>
+
+<form action="/opinions" method="post">
+
+  <input type="hidden" name="id" value="{{sfid}}">
+  <input type="hidden" name="latitude" id="latitude">
+  <input type="hidden" name="longitude" id="longitude">
+
+  {{#each questions}}
+    <li class="{{response_type__c}}">
+      <label>{{question__c}}</label>
+      {{{answerInput}}}
+    </li>
+  {{/each}}
+
+  <li class="transparent-bg">
+    <input type="submit" value="Submit">
+  </li>
+
+</form>
