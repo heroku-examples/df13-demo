@@ -31,5 +31,5 @@ app.post "/opinions", (req, res) ->
     res.redirect("/?thanks")
 
 app.get "/opinions/:opinion_id", (req, res) ->
-  db.getOpinions req.params.opinion_id, (opinion) ->
+  db.getOpinion req.params.opinion_id, (opinion) ->
     res.render "opinion", opinion
